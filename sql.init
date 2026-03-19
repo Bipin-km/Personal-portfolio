@@ -1,0 +1,58 @@
+-- SQL Init for portfolio DB
+-- Create database and tables (run inside psql)
+
+-- Example: CREATE DATABASE portfolio_db;
+
+-- Create tables
+CREATE TABLE IF NOT EXISTS skills (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE,
+  level TEXT
+);
+
+CREATE TABLE IF NOT EXISTS projects (
+  id SERIAL PRIMARY KEY,
+  title TEXT NOT NULL UNIQUE,
+  description TEXT,
+  tech_stack TEXT,
+  github_url TEXT,
+  live_url TEXT
+);
+
+CREATE TABLE IF NOT EXISTS about (
+  id SERIAL PRIMARY KEY,
+  content TEXT
+);
+
+CREATE TABLE IF NOT EXISTS contacts (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  message TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT now()
+);
+
+-- Insert sample data
+INSERT INTO skills (name, level) VALUES
+  ('React', 'Advanced') ON CONFLICT (name) DO NOTHING,
+  ('Node.js', 'Advanced') ON CONFLICT (name) DO NOTHING,
+  ('PostgreSQL', 'Intermediate') ON CONFLICT (name) DO NOTHING,
+  ('Python', 'Intermediate') ON CONFLICT (name) DO NOTHING,
+  ('C++', 'Intermediate') ON CONFLICT (name) DO NOTHING,
+  ('TensorFlow', 'Familiar') ON CONFLICT (name) DO NOTHING,
+  ('PyTorch', 'Familiar') ON CONFLICT (name) DO NOTHING,
+  ('Docker', 'Familiar') ON CONFLICT (name) DO NOTHING;
+
+INSERT INTO projects (title, description, tech_stack, github_url, live_url) VALUES
+  ('Josh Lifestyle Website (Front-end)', 'Collaborated to build a production-grade e-commerce site and reusable React components.', 'React, JavaScript, HTML/CSS', 'https://github.com/Bipin-km', 'https://josh-lifestyle.com/')
+  ON CONFLICT (title) DO NOTHING,
+  ('PragyaBin (Waste Management)', 'AI-powered smart bin and real-time waste-tracking ecosystem — 1st Place Winner.', 'React, Node.js, Embedded Systems, AI', NULL, NULL)
+  ON CONFLICT (title) DO NOTHING,
+  ('Emergency Rescue (Disaster Management Platform)', 'A disaster coordination platform using React to streamline rescue and relief efforts.', 'React, Node.js', NULL, NULL)
+  ON CONFLICT (title) DO NOTHING,
+  ('ArthaGyan (Financial Literacy Web App)', 'Educational platform helping beginners navigate personal finance.', 'React, Node.js', NULL, NULL)
+  ON CONFLICT (title) DO NOTHING;
+
+INSERT INTO about (content) VALUES
+  ('I am Bipin Kumar Marasini, a Computer Engineering student and full-stack developer focused on building fast, accessible web applications. My work spans web development, AI research, and competitive hackathons.')
+  ON CONFLICT DO NOTHING;
