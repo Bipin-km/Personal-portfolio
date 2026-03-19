@@ -3,6 +3,10 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 
+// Log environment
+console.log('DB Host:', process.env.DATABASE_URL ? 'SET' : 'NOT SET')
+console.log('PORT:', process.env.PORT || 4000)
+
 const skillsRoute = require('./routes/skills')
 const projectsRoute = require('./routes/projects')
 const aboutRoute = require('./routes/about')
