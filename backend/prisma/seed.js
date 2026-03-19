@@ -2,6 +2,10 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 async function main() {
+  // Clear existing data
+  await prisma.project.deleteMany({})
+  await prisma.skill.deleteMany({})
+
   // Seed skills
   const skills = [
     { name: 'React', level: 'Advanced', category: 'Frontend', proficiency: 85 },
@@ -17,17 +21,9 @@ async function main() {
     { name: 'Docker', level: 'Intermediate', category: 'DevOps', proficiency: 75 }
   ]
 
-  // Insert/update skills - upsert to avoid duplicates
+  // Create skills
   for (const skill of skills) {
-    await prisma.skill.upsert({
-      where: { name: skill.name },
-      update: {
-        level: skill.level,
-        category: skill.category,
-        proficiency: skill.proficiency
-      },
-      create: skill
-    })
+    await prisma.skill.create({ data: skill })
   }
 
   // Seed projects
@@ -89,29 +85,20 @@ async function main() {
     }
   ]
 
-  // Insert projects: update existing ones and create new ones
+  // Create projects
   for (const project of projects) {
-    await prisma.project.upsert({
-      where: { title: project.title },
-      update: {
-        description: project.description,
-        long_description: project.long_description,
-        tech_stack: project.tech_stack,
-        github_url: project.github_url,
-        live_url: project.live_url,
-        category: project.category,
-        featured: project.featured,
-        date: project.date
-      },
-      create: project
-    })
+    await prisma.project.create({ data: project })
   }
 
   // Seed about
-  const existingAbout = await prisma.about.findFirst()
-  if (!existingAbout) {
-    await prisma.about.create({ data: { content: 'I am Bipin Kumar Marasini, a Computer Engineering student and full-stack developer focused on building fast, accessible web applications. My work spans web development, AI research, and competitive hackathons.' } })
-  }
+  await prisma.about.deleteMany({})
+  await prisma.about.create({
+    data: {
+      content: 'I am Bipin Kumar Marasini, a Computer Engineering student and full-stack developer focused on building fast, accessible web applications. My work spans web development, AI research, and competitive hackathons.'
+    }
+  })
+
+  console.log('✅ Database seeding completed successfully!')
 }
 
 main()
