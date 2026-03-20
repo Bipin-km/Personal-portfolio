@@ -41,7 +41,7 @@ npm start    # Runs on http://localhost:4000
 ## Project Links
 
 - **GitHub:** [Bipin-km/Personal-portfolio](https://github.com/Bipin-km/Personal-portfolio)
-- **Live:** [Vercel Deployment](https://personal-portfolio-nnpd7f9c7-bipinkms-projects.vercel.app/) 
+- **Live:** [https://personal-portfolio-flame-five-37.vercel.app/](https://personal-portfolio-flame-five-37.vercel.app/) 
 
 ## Documentation
 
