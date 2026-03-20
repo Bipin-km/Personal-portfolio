@@ -1,155 +1,53 @@
-# 🚀 Premium Portfolio (Full-Stack)
+# Personal Portfolio
 
-A modern, responsive full-stack portfolio website with premium design and smooth interactions.
+**Student:** Bipin Kumar Marasini  
+**Roll No:** THA078BCT014
 
-**Live Demo**: [Coming Soon]
-**GitHub**: [@Bipin-km](https://github.com/Bipin-km)
+A modern, responsive full-stack portfolio website showcasing technical skills, projects, and professional background.
 
-## ✨ Features
+## Tech Stack
 
-### 🎨 Design
-- Modern gradient color system (cyan, pink, purple)
-- Dark mode support (automatic system detection)
-- Smooth animations & transitions
-- Mobile-first responsive design
-- Professional typography & spacing
+- **Frontend:** React 18, Vite, CSS3 with Gradients
+- **Backend:** Node.js, Express.js
+- **ORM:** Prisma
+- **Database:** PostgreSQL
+- **Deployment:** Vercel (Frontend), Render (Backend), Supabase (Database)
 
-### 🎯 Functionality
-- Skills with categories & proficiency bars (4 categories)
-- Projects with filtering & dates (3 categories)
-- Professional about section with timeline
-- Contact form with toast notifications
-- Sticky navigation with smooth scrolling
-- Gamification with XP & badges
+## Features
 
-### 💾 Data
-- 11 skills with proficiency levels
-- 6 projects with metadata
-- Professional about content
-- Contact submissions tracking
+- Dynamic content from REST API with graceful fallback to mock data
+- Category-based filtering for skills and projects
+- Responsive design with dark mode support
+- Professional timeline and project showcase
+- Contact form with form handling
+- XP and badge gamification system
 
-## 🛠️ Tech Stack
+## Quick Start
 
-**Frontend**
-- React 18 + Vite
-- Modern CSS with gradients & animations
-- Responsive design (mobile, tablet, desktop)
-
-**Backend**
-- Node.js + Express
-- Prisma ORM
-- PostgreSQL database
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 16+
-- PostgreSQL 12+
-
-### Setup
-
+### Frontend
 ```bash
-# Clone repository
-git clone <your-repo-url>
-cd portfolio
+cd frontend
+npm install
+npm run dev  # Runs on http://localhost:5173
+```
 
-# Backend
+### Backend
+```bash
 cd backend
-cp .env.example .env
-# Edit .env with your DATABASE_URL
 npm install
-npx prisma generate
-npx prisma migrate deploy
-node prisma/seed.js
-npm run dev
-
-# Frontend (new terminal)
-cd frontend
-cp .env.example .env
-npm install
-npm run dev
+npm start    # Runs on http://localhost:4000
 ```
 
-**Frontend**: http://localhost:5173
-**Backend**: http://localhost:4000
+## Project Links
 
-## 📁 Project Structure
+- **GitHub:** [Bipin-km/Personal-portfolio](https://github.com/Bipin-km/Personal-portfolio)
+- **Live:** [Vercel Deployment](https://personal-portfolio-nnpd7f9c7-bipinkms-projects.vercel.app/) 
 
-```
-portfolio/
-├── frontend/               React + Vite
-│   ├── src/
-│   │   ├── pages/         (5 page components)
-│   │   ├── components/    (Navbar, Canvas, Popup)
-│   │   ├── utils/         (XP tracking)
-│   │   ├── App.jsx
-│   │   ├── index.css      (All styling)
-│   │   └── main.jsx
-│   └── package.json
-├── backend/                Express + Prisma
-│   ├── src/
-│   │   ├── routes/        (API endpoints)
-│   │   ├── prismaClient.js
-│   │   └── index.js
-│   ├── prisma/
-│   │   ├── schema.prisma  (Database schema)
-│   │   ├── seed.js        (Sample data)
-│   │   └── migrations/
-│   └── package.json
-├── README.md
-└── sql.init
-```
+## Documentation
 
-## 📚 Documentation
-
-- **[Frontend README](./frontend/README.md)** - Frontend setup & customization
-- **[Backend README](./backend/README.md)** - Backend API & database
-
-## 🌐 Deployment
-
-### Frontend (Vercel/Netlify)
-```bash
-cd frontend
-npm run build
-# Deploy dist/ folder
-```
-
-### Backend (Render/Railway/Heroku)
-- Push to GitHub
-- Connect repository to platform
-- Set environment variables
-- Deploy
-
-### Database
-- PostgreSQL (Supabase, Railway, or Render)
-
-## 📖 Environment Variables
-
-**Backend** (.env)
-```
-DATABASE_URL="postgresql://user:password@localhost:5432/portfolio_db"
-PORT=4000
-```
-
-**Frontend** (.env)
-```
-VITE_API_URL=http://localhost:4000/api
-```
-
-## 🎓 Customization
-
-**Colors**: Edit CSS variables in `frontend/src/index.css`
-
-**Content**: Update `backend/prisma/seed.js` with your data
-
-**Features**: Modify React components in `frontend/src/pages/`
-
-## 📧 Contact & Links
-
-- **GitHub**: [@Bipin-km](https://github.com/Bipin-km)
-- **LinkedIn**: [Bipin K. Marasini](https://www.linkedin.com/in/bipin-k-marasini-75795b334/)
-- **Portfolio**: [Coming Soon]
+- [Frontend README](./frontend/README.md)
+- [Backend README](./backend/README.md)
 
 ---
 
-**Built with ❤️ by Bipin Kumar Marasini**
+Built as part of Internet and Intranet Lab assignment

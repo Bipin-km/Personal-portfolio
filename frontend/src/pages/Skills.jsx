@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { addXP, addBadge } from '../utils/xp'
+import { mockSkills } from '../utils/mockData'
 import BadgePopup from '../components/BadgePopup'
 
 const SKILL_ICON = {
@@ -30,11 +31,12 @@ export default function Skills() {
     fetch(`${base}/skills`)
       .then((r) => r.json())
       .then((data) => {
-        setSkills(data)
+        setSkills(data && data.length > 0 ? data : mockSkills)
         setLoading(false)
       })
       .catch((e) => {
-        setError('Failed to load skills')
+        console.warn('Failed to load skills from backend, using mock data:', e)
+        setSkills(mockSkills)
         setLoading(false)
       })
   }, [])

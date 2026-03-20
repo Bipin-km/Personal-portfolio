@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { mockAbout } from '../utils/mockData'
 
 export default function About() {
-  const [about, setAbout] = useState('')
+  const [about, setAbout] = useState(mockAbout.content)
 
   useEffect(() => {
     document.title = 'About — Portfolio'
     const base = import.meta.env.VITE_API_URL || '/api'
     fetch(`${base}/about`)
       .then((r) => r.json())
-      .then((data) => setAbout(data.content || ''))
-      .catch(() => setAbout(''))
+      .then((data) => setAbout(data.content || mockAbout.content))
+      .catch(() => setAbout(mockAbout.content))
   }, [])
 
   return (

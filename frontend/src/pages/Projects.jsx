@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { addXP, addBadge } from '../utils/xp'
+import { mockProjects } from '../utils/mockData'
 import BadgePopup from '../components/BadgePopup'
 
 const TECH_ICONS = {
@@ -35,11 +36,12 @@ export default function Projects() {
     fetch(`${base}/projects`)
       .then((r) => r.json())
       .then((data) => {
-        setProjects(data)
+        setProjects(data && data.length > 0 ? data : mockProjects)
         setLoading(false)
       })
       .catch(() => {
-        setError('Failed to load projects')
+        console.warn('Failed to load projects from backend, using mock data')
+        setProjects(mockProjects)
         setLoading(false)
       })
   }, [])
